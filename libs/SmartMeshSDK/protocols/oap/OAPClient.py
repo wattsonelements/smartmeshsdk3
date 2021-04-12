@@ -41,7 +41,7 @@ class OAPClient(object):
 
         # TODO: adjust send_data to match connector
         # send_data expects msg as list of integers
-        oap_payload = [ord(b) for b in oap_msg]
+        oap_payload = [b for b in oap_msg]
         
         #print ' '.join(['TX: ']+["%.2x"%c for c in oap_payload])
         

@@ -59,7 +59,7 @@ def logCrash(threadName,err):
     print (output)
 
 def reversedict(d):
-    return dict((v,k) for (k,v) in d.iteritems())
+    return dict((v,k) for (k,v) in d.items())
 
 def stringifyMacIpAddresses(indict):
     '''
