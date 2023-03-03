@@ -12,6 +12,7 @@ import threading
 import copy
 import pickle
 import traceback
+import codecs
 from future.utils import iteritems
 from builtins import str as text
 if os.name=='nt':       # Windows
@@ -887,7 +888,7 @@ class JsonManager(object):
             elif v==[]:
                 fields[n]         = v
             else:
-                fields[n]         = int(''.join([chr(b) for b in v]).encode('hex'), 16)
+                fields[n]         = int(codecs.encode(bytes(''.join([chr(b) for b in v]), 'utf-8'), 'hex'), 16)
         returnVal['fields']       = fields
         return returnVal
     
