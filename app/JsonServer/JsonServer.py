@@ -214,6 +214,12 @@ class JsonServer(object):
         webthread.name = 'WebServer'
         webthread.daemon = True
         webthread.start()
+        
+        # this is the main thread, we don't want it to die
+        while True:
+            time.sleep(1)
+            if self.cli.is_alive()==False:
+                break
     
     #======================== admin ===========================================
     
