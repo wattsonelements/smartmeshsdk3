@@ -4,7 +4,7 @@ from bottle import route, run, request
 import paho.mqtt.client as mqtt
 import requests
 
-TOPIC = "aiotacademy"
+TOPIC = "aiotsystems"
 
 # from broker
 def mqtt_on_message(client, userdata, msg):
