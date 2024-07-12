@@ -1,5 +1,11 @@
+import logging
 import threading
+import traceback
 from queue import Queue
+
+
+log = logging.getLogger('otap_communicator')
+
 
 class NotifWorker(threading.Thread):
     '''
@@ -27,7 +33,10 @@ class NotifWorker(threading.Thread):
                 func(*args, **kargs)
             except Exception as e:
                 # TODO: log this somewhere
-                print ("NotifWorker task raised Exception:")
-                print (e)
+                print("NotifWorker task raised Exception:")
+                print("Error in %s: %s" % (func.__qualname__, e))
+                print(traceback.format_exc())
+                traceback.print_exc()
+                log.exception("Error in %s: %s", func.__qualname__, e, exc_info=True, stack_info=True)
             self.tasks.task_done()
 
